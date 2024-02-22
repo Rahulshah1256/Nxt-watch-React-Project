@@ -35,7 +35,9 @@ const Home = () => {
   const [apiStatus, setApiStatus] = useState(apiStatusConstants.initial)
   const [bannerDisplay, setBannerDisplay] = useState('flex')
 
-  const { isDarkTheme } = useContext(nxtWatchContext)
+  useEffect(() => {
+    getVideos()
+  }, []) // Run only on initial render
 
   const getVideos = async () => {
     setApiStatus(apiStatusConstants.inProgress)
@@ -66,16 +68,9 @@ const Home = () => {
         setApiStatus(apiStatusConstants.failure)
       }
     } catch (error) {
-      console.error('Error fetching videos:', error)
       setApiStatus(apiStatusConstants.failure)
     }
   }
-
-  
-  useEffect(() => {
-    getVideos()
-  }, [])
-
 
   const onCloseBanner = () => {
     setBannerDisplay('none')
@@ -117,6 +112,7 @@ const Home = () => {
     }
   }
 
+  const { isDarkTheme } = useContext(nxtWatchContext)
   const bgColor = isDarkTheme ? '#181818' : '#f9f9f9'
   const textColor = isDarkTheme ? '#f9f9f9' : '#231f20'
   const display = bannerDisplay === 'flex' ? 'flex' : 'none'

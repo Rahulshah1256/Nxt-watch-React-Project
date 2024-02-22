@@ -1,3 +1,4 @@
+import React, { useState } from 'react'
 import {Route, BrowserRouter, Routes} from 'react-router-dom'
 import ProtectedRoute from './components/ProtectedRoute'
 import LoginForm from './components/LoginForm'
@@ -10,10 +11,20 @@ import NotFound from './components/NotFound'
 
 
 import './App.css'
+import nxtWatchContext from './context/nxtWatchContext'
 
 // Replace your code here
 const App = () => {
+
+    const [isDarkTheme, setIsDarkTheme] = useState(false)
     return (
+        <nxtWatchContext.Provider
+        value={{
+            
+            isDarkTheme,
+           
+          }}
+      >
   <BrowserRouter>
       <Routes>
         <Route path='/login' element={<LoginForm />} />
@@ -25,7 +36,7 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-        {/* <Route
+        <Route
           path='/trending'
           element={
             <ProtectedRoute>
@@ -41,9 +52,10 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-        <Route path='/not-found' element={<NotFound />} /> */}
+        <Route path='/not-found' element={<NotFound />} />
       </Routes>
     </BrowserRouter>
+     </nxtWatchContext.Provider>
       )
 }
 
