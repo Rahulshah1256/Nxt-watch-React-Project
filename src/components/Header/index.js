@@ -4,7 +4,7 @@ import Cookies from 'js-cookie'
 import Popup from 'reactjs-popup'
 import { BsMoon, BsBrightnessHigh } from 'react-icons/bs'
 import { FiLogOut } from 'react-icons/fi'
-import ThemeAndVideoContext from '../../context/ThemeAndVideoContext'
+import nxtWatchContext from '../../context/nxtWatchContext'
 import {
   LogoLink,
   NavbarHeader,
@@ -22,7 +22,7 @@ import {
 } from './styledComponents'
 
 const Header = ({ history }) => {
-  const { isDarkTheme, toggleTheme } = useContext(ThemeAndVideoContext)
+  const { isDarkTheme, toggleTheme } = useContext(nxtWatchContext)
   const color = isDarkTheme ? '#ffffff' : '#00306e'
   const bgColor = isDarkTheme ? '#231f20' : '#f1f5f9'
 
@@ -117,4 +117,4 @@ const Header = ({ history }) => {
   )
 }
 
-export default withRouter(Header)
+export default Header

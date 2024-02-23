@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import ReactPlayer from 'react-player'
 import { AiOutlineLike, AiOutlineDislike } from 'react-icons/ai'
 import { BiListPlus } from 'react-icons/bi'
-import ThemeAndVideoContext from '../../context/ThemeAndVideoContext'
+import nxtWatchContext from '../../context/nxtWatchContext'
 import {
   VideoPlayer,
   PlayVideoTitle,
@@ -24,7 +24,7 @@ import {
 
 const PlayVideoView = (props) => {
   const { videoDetails, isLiked, isDisLiked, clickLiked, clickDisLiked } = props
-  const { isDarkTheme, addVideo, savedVideos } = useContext(ThemeAndVideoContext)
+  const { isDarkTheme, addVideo, savedVideos } = useContext(nxtWatchContext)
   const textColor = isDarkTheme ? '#64748b' : '#231f20'
   const likeIconColor = isLiked ? '#2563eb' : '#64748b'
   const dislikeIconColor = isDisLiked ? '#2563eb' : '#64748b'

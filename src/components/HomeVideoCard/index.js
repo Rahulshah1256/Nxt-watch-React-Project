@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import ThemeAndVideoContext from '../../context/ThemeAndVideoContext'
+import nxtWatchContext from '../../context/nxtWatchContext'
 import {
   ListItem,
   ThumbNailImage,
@@ -16,7 +16,7 @@ import {
 import './index.css'
 
 const HomeVideoCard = ({ video }) => {
-  const { isDarkTheme } = useContext(ThemeAndVideoContext)
+  const { isDarkTheme } = useContext(nxtWatchContext)
   const textColor = isDarkTheme ? '#f9f9f9' : '#231f20'
 
   const {

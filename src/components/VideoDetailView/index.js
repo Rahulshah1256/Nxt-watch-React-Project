@@ -3,7 +3,7 @@ import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 import Header from '../Header'
 import NavigationBar from '../NavigationBar'
-import ThemeAndVideoContext from '../../context/ThemeAndVideoContext'
+import nxtWatchContext from '../../context/nxtWatchContext'
 import FailureView from '../FailureView'
 import PlayVideoView from '../PlayVideoView'
 import { VideoDetailViewContainer, LoaderContainer } from './styledComponents'
@@ -111,7 +111,7 @@ const VideoDetailView = ({ match }) => {
   }
 
   return (
-    <ThemeAndVideoContext.Consumer>
+    <nxtWatchContext.Consumer>
       {value => {
         const { isDarkTheme } = value
         const bgColor = isDarkTheme ? '#0f0f0f' : '#f9f9f9'
@@ -129,7 +129,7 @@ const VideoDetailView = ({ match }) => {
           </>
         )
       }}
-    </ThemeAndVideoContext.Consumer>
+    </nxtWatchContext.Consumer>
   )
 }
 

@@ -1,6 +1,6 @@
 import Header from '../Header'
 import NavigationBar from '../NavigationBar'
-import ThemeAndVideoContext from '../../context/ThemeAndVideoContext'
+import nxtWatchContext from '../../context/nxtWatchContext'
 import {
   NotFoundContainer,
   NotFoundVideosView,
@@ -10,7 +10,7 @@ import {
 } from './styledComponents'
 
 const NotFound = () => (
-  <ThemeAndVideoContext.Consumer>
+  <nxtWatchContext.Consumer>
     {value => {
       const {isDarkTheme} = value
       // console.log(savedVideos)
@@ -41,7 +41,7 @@ const NotFound = () => (
         </>
       )
     }}
-  </ThemeAndVideoContext.Consumer>
+  </nxtWatchContext.Consumer>
 )
 
 export default NotFound

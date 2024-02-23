@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import ThemeAndVideoContext from '../../context/ThemeAndVideoContext'
+import nxtWatchContext from '../../context/nxtWatchContext'
 import {
   FailedView,
   FailedImage,
@@ -9,7 +9,7 @@ import {
 } from './styledComponents'
 
 const FailureView = ({ onRetry }) => {
-  const { isDarkTheme } = useContext(ThemeAndVideoContext)
+  const { isDarkTheme } = useContext(nxtWatchContext)
   const headingColor = isDarkTheme ? '#f1f5f9' : '#1e293b'
   const noteColor = isDarkTheme ? '#e2e8f0' : '#475569'
 

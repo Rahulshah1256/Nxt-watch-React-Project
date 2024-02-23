@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import ThemeAndVideoContext from '../../context/ThemeAndVideoContext'
+import nxtWatchContext from '../../context/nxtWatchContext'
 import HomeVideoCard from '../HomeVideoCard'
 import {
   NoVideosView,
@@ -11,7 +11,7 @@ import {
 } from './styledComponents'
 
 const HomeVideos = ({ homeVideos, onRetry }) => {
-  const { isDarkTheme } = useContext(ThemeAndVideoContext)
+  const { isDarkTheme } = useContext(nxtWatchContext)
   const videosCount = homeVideos.length
 
   const onClickRetry = () => {

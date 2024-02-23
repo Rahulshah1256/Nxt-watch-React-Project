@@ -3,7 +3,7 @@ import { AiFillHome } from 'react-icons/ai'
 import { HiFire } from 'react-icons/hi'
 import { SiYoutubegaming } from 'react-icons/si'
 import { CgPlayListAdd } from 'react-icons/cg'
-import ThemeAndVideoContext from '../../context/ThemeAndVideoContext'
+import nxtWatchContext from '../../context/nxtWatchContext'
 import {
   NavigationLgContainer,
   NavOptions,
@@ -20,7 +20,7 @@ import {
 } from './styledComponents'
 
 const NavigationBar = () => {
-  const { isDarkTheme, activeTab, changeTab } = useContext(ThemeAndVideoContext)
+  const { isDarkTheme, activeTab, changeTab } = useContext(nxtWatchContext)
   const [navItems] = useState([
     { label: 'Home', icon: AiFillHome, path: '/' },
     { label: 'Trending', icon: HiFire, path: '/trending' },
