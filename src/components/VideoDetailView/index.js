@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 import Header from '../Header'
@@ -6,7 +6,8 @@ import NavigationBar from '../NavigationBar'
 import nxtWatchContext from '../../context/nxtWatchContext'
 import FailureView from '../FailureView'
 import PlayVideoView from '../PlayVideoView'
-import { VideoDetailViewContainer, LoaderContainer } from './styledComponents'
+import {VideoDetailViewContainer, LoaderContainer} from './styledComponents'
+import {useParams} from 'react-router-dom'
 
 const apiStatusConstants = {
   initial: 'INITIAL',
@@ -15,11 +16,12 @@ const apiStatusConstants = {
   inProgress: 'IN_PROGRESS',
 }
 
-const VideoDetailView = ({ match }) => {
+const VideoDetailView = () => {
   const [apiStatus, setApiStatus] = useState(apiStatusConstants.initial)
   const [videoDetails, setVideoDetails] = useState([])
   const [isLiked, setIsLiked] = useState(false)
   const [isDisLiked, setIsDisLiked] = useState(false)
+  const {id} = useParams()
 
   useEffect(() => {
     getVideoDetails()
@@ -40,7 +42,7 @@ const VideoDetailView = ({ match }) => {
 
   const getVideoDetails = async () => {
     setApiStatus(apiStatusConstants.inProgress)
-    const { id } = match.params
+
     const jwtToken = Cookies.get('jwt_token')
     const url = `https://apis.ccbp.in/videos/${id}`
     const options = {
@@ -76,8 +78,8 @@ const VideoDetailView = ({ match }) => {
   }
 
   const renderLoadingView = () => (
-    <LoaderContainer data-testid="loader">
-      <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
+    <LoaderContainer data-testid='loader'>
+      <Loader type='ThreeDots' color='#0b69ff' height='50' width='50' />
     </LoaderContainer>
   )
 
@@ -113,7 +115,7 @@ const VideoDetailView = ({ match }) => {
   return (
     <nxtWatchContext.Consumer>
       {value => {
-        const { isDarkTheme } = value
+        const {isDarkTheme} = value
         const bgColor = isDarkTheme ? '#0f0f0f' : '#f9f9f9'
 
         return (
@@ -121,7 +123,7 @@ const VideoDetailView = ({ match }) => {
             <Header />
             <NavigationBar />
             <VideoDetailViewContainer
-              data-testid="videoItemDetails"
+              data-testid='videoItemDetails'
               bgColor={bgColor}
             >
               {renderVideoDetailView()}

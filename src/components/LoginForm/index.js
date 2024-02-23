@@ -17,13 +17,12 @@ import {
 } from './styledComponents'
 
 const LoginForm = () => {
-  
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [showSubmitError, setShowSubmitError] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
   const [errorMsg, setErrorMsg] = useState('')
-  
+
   const navigate = useNavigate()
 
   const onChangeUsername = event => {
@@ -66,8 +65,6 @@ const LoginForm = () => {
     }
   }
 
-  
-
   const renderUsernameField = () => (
     <>
       <InputLabel className='input-label' htmlFor='username'>
@@ -84,47 +81,39 @@ const LoginForm = () => {
     </>
   )
 
-
   const renderPasswordField = () => {
-    
     return (
       <>
-        <InputLabel htmlFor="password">PASSWORD</InputLabel>
+        <InputLabel htmlFor='password'>PASSWORD</InputLabel>
         <UserInput
-        type={showPassword ? 'text' : 'password'}
-        
-          id="password"
+          type={showPassword ? 'text' : 'password'}
+          id='password'
           value={password}
-          name="password"
+          name='password'
           onChange={onChangePassword}
-          placeholder="Password"
+          placeholder='Password'
         />
         <CheckboxContainer>
-          <Checkbox
-            type="checkbox"
-            id="checkbox"
-            onChange={onShowPassword}
-          />
-          <ShowPassword htmlFor="checkbox">Show Password</ShowPassword>
+          <Checkbox type='checkbox' id='checkbox' onChange={onShowPassword} />
+          <ShowPassword htmlFor='checkbox'>Show Password</ShowPassword>
         </CheckboxContainer>
       </>
     )
   }
 
-
-    return (
-      <AppContainer>
-        <FormContainer onSubmit={onSubmitForm}>
-          <LoginLogo
-            src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
-            alt="website logo"
-          />
-          <InputContainer>{renderUsernameField()}</InputContainer>
-          <InputContainer>{renderPasswordField()}</InputContainer>
-          <LoginButton type="submit">Login</LoginButton>
-          {showSubmitError && <SubmitError>*{errorMsg}</SubmitError>}
-        </FormContainer>
-      </AppContainer>
-    )
+  return (
+    <AppContainer>
+      <FormContainer onSubmit={onSubmitForm}>
+        <LoginLogo
+          src='https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png'
+          alt='website logo'
+        />
+        <InputContainer>{renderUsernameField()}</InputContainer>
+        <InputContainer>{renderPasswordField()}</InputContainer>
+        <LoginButton type='submit'>Login</LoginButton>
+        {showSubmitError && <SubmitError>*{errorMsg}</SubmitError>}
+      </FormContainer>
+    </AppContainer>
+  )
 }
 export default LoginForm
