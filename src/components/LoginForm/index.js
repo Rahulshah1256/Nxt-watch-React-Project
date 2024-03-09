@@ -1,20 +1,8 @@
-import {useState} from 'react'
+import { useState } from 'react'
 import Cookies from 'js-cookie'
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
-import {
-  AppContainer,
-  FormContainer,
-  LoginLogo,
-  InputContainer,
-  LoginButton,
-  SubmitError,
-  InputLabel,
-  UserInput,
-  CheckboxContainer,
-  Checkbox,
-  ShowPassword,
-} from './styledComponents'
+import './index.css'
 
 const LoginForm = () => {
   const [username, setUsername] = useState('')
@@ -38,8 +26,7 @@ const LoginForm = () => {
   }
 
   const onSubmitSuccess = jwtToken => {
-    // Storing JWT token
-    Cookies.set('jwt_token', jwtToken, {expires: 30})
+    Cookies.set('jwt_token', jwtToken, { expires: 30 })
     navigate('/')
   }
   const onSubmitFailure = errorMsg => {
@@ -49,7 +36,7 @@ const LoginForm = () => {
 
   const onSubmitForm = async event => {
     event.preventDefault()
-    const userDetails = {username, password}
+    const userDetails = { username, password }
     const url = 'https://apis.ccbp.in/login'
     const options = {
       method: 'POST',
@@ -67,10 +54,10 @@ const LoginForm = () => {
 
   const renderUsernameField = () => (
     <>
-      <InputLabel className='input-label' htmlFor='username'>
+      <label className='input-label' htmlFor='username'>
         USERNAME
-      </InputLabel>
-      <UserInput
+      </label>
+      <input
         type='text'
         id='username'
         className='username-input-field'
@@ -84,8 +71,8 @@ const LoginForm = () => {
   const renderPasswordField = () => {
     return (
       <>
-        <InputLabel htmlFor='password'>PASSWORD</InputLabel>
-        <UserInput
+        <label className='input-label' htmlFor='password'>PASSWORD</label>
+        <input
           type={showPassword ? 'text' : 'password'}
           id='password'
           value={password}
@@ -93,27 +80,30 @@ const LoginForm = () => {
           onChange={onChangePassword}
           placeholder='Password'
         />
-        <CheckboxContainer>
-          <Checkbox type='checkbox' id='checkbox' onChange={onShowPassword} />
-          <ShowPassword htmlFor='checkbox'>Show Password</ShowPassword>
-        </CheckboxContainer>
+        <div className='checkbox-container'>
+          <input type='checkbox' id='checkbox' onChange={onShowPassword} />
+          <label htmlFor='checkbox'>Show Password</label>
+        </div>
       </>
     )
   }
 
   return (
-    <AppContainer>
-      <FormContainer onSubmit={onSubmitForm}>
-        <LoginLogo
+    <div className='app-container'>
+      <form className='form-container' onSubmit={onSubmitForm}>
+        <img
           src='https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png'
           alt='website logo'
+          className='login-logo'
         />
-        <InputContainer>{renderUsernameField()}</InputContainer>
-        <InputContainer>{renderPasswordField()}</InputContainer>
-        <LoginButton type='submit'>Login</LoginButton>
-        {showSubmitError && <SubmitError>*{errorMsg}</SubmitError>}
-      </FormContainer>
-    </AppContainer>
+        <div className='input-container'>{renderUsernameField()}</div>
+        <div className='input-container'>{renderPasswordField()}</div>
+        <button type='submit' className='login-button'>
+          Login
+        </button>
+        {showSubmitError && <p className='submit-error'>*{errorMsg}</p>}
+      </form>
+    </div>
   )
 }
 export default LoginForm

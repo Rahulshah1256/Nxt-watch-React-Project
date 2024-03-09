@@ -1,18 +1,6 @@
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import nxtWatchContext from '../../context/nxtWatchContext'
-import {
-  ListItem,
-  ThumbNailImage,
-  VideoDetails,
-  ProfileImage,
-  ContentSection,
-  Title,
-  ChannelName,
-  ViewsAndDate,
-  Dot,
-} from './styledComponents'
-
 import './index.css'
 
 const HomeVideoCard = ({ video }) => {
@@ -31,19 +19,19 @@ const HomeVideoCard = ({ video }) => {
 
   return (
     <Link to={`/videos/${id}`} className="link">
-      <ListItem>
-        <ThumbNailImage src={thumbnailUrl} alt="video thumbnail" />
-        <VideoDetails>
-          <ProfileImage src={profileImageUrl} alt="channel logo" />
-          <ContentSection>
-            <Title color={textColor}>{title}</Title>
-            <ChannelName color={textColor}>{name}</ChannelName>
-            <ViewsAndDate color={textColor}>
-              {viewCount} views<Dot> &#8226; </Dot> {publishedAt}
-            </ViewsAndDate>
-          </ContentSection>
-        </VideoDetails>
-      </ListItem>
+      <li className="list-item">
+        <img src={thumbnailUrl} alt="video thumbnail" className="thumbnail-image" />
+        <div className="video-details">
+          <img src={profileImageUrl} alt="channel logo" className="profile-image" />
+          <div className="content-section">
+            <p className="title" style={{ color: textColor }}>{title}</p>
+            <p className="channel-name" style={{ color: textColor }}>{name}</p>
+            <p className="views-and-date" style={{ color: textColor }}>
+              {viewCount} views<span className="dot"> &#8226; </span> {publishedAt}
+            </p>
+          </div>
+        </div>
+      </li>
     </Link>
   )
 }

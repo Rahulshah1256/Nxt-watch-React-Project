@@ -1,0 +1,35 @@
+.video-link {
+    text-decoration: none;
+  }
+  
+  .video-list-item {
+    background: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .video-thumbnail-image {
+    width: 100vw;
+    height: 300px;
+    align-self: center;
+  }
+  
+  .video-content-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 8px;
+  }
+  
+  .video-title {
+    font-family: 'Roboto';
+    font-size: 15px;
+    margin-bottom: 0px;
+  }
+  
+  .views-and-date {
+    font-family: Roboto;
+    font-size: 12px;
+  }
+  

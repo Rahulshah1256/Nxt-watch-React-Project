@@ -7,14 +7,8 @@ import NavigationBar from '../NavigationBar';
 import nxtWatchContext from '../../context/nxtWatchContext';
 import FailureView from '../FailureView';
 import GameVideoCard from '../GameVideoCard';
-import {
-  GamingContainer,
-  GamingTitleIconContainer,
-  GamingVideoTitle,
-  GamingVideoList,
-  GamingText,
-  LoaderContainer,
-} from './styledComponents';
+
+import './index.css';
 
 const apiStatusConstants = {
   initial: 'INITIAL',
@@ -64,17 +58,17 @@ const GamingVideos = () => {
   };
 
   const renderLoadingView = () => (
-    <LoaderContainer data-testid="loader">
+    <div className="loader-container" data-testid="loader">
       <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
-    </LoaderContainer>
+    </div>
   );
 
   const renderVideosView = () => (
-    <GamingVideoList>
+    <ul className="gaming-video-list">
       {gamingVideos.map(eachVideo => (
         <GameVideoCard key={eachVideo.id} videoDetails={eachVideo} />
       ))}
-    </GamingVideoList>
+    </ul>
   );
 
   const onRetry = () => {
@@ -104,15 +98,15 @@ const GamingVideos = () => {
     <div>
       <Header />
       <NavigationBar />
-      <GamingContainer data-testid="gaming" bgColor={bgColor}>
-        <GamingVideoTitle>
-          <GamingTitleIconContainer>
+      <div className="gaming-container" data-testid="gaming" style={{ backgroundColor: bgColor }}>
+        <div className="gaming-video-title">
+          <div className="gaming-title-icon-container">
             <SiYoutubegaming size={35} color="#ff0000" />
-          </GamingTitleIconContainer>
-          <GamingText color={textColor}>Gaming</GamingText>
-        </GamingVideoTitle>
+          </div>
+          <h1 className="gaming-text" style={{ color: textColor }}>Gaming</h1>
+        </div>
         {renderTrendingVideos()}
-      </GamingContainer>
+      </div>
     </div>
   );
 };

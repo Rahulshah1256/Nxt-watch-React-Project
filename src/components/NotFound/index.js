@@ -1,47 +1,39 @@
-import Header from '../Header'
-import NavigationBar from '../NavigationBar'
-import nxtWatchContext from '../../context/nxtWatchContext'
-import {
-  NotFoundContainer,
-  NotFoundVideosView,
-  NotFoundVideosImage,
-  NotFoundVideosHeading,
-  NotFoundVideosNote,
-} from './styledComponents'
+import Header from '../Header';
+import NavigationBar from '../NavigationBar';
+import nxtWatchContext from '../../context/nxtWatchContext';
 
 const NotFound = () => (
   <nxtWatchContext.Consumer>
     {value => {
-      const {isDarkTheme} = value
-      // console.log(savedVideos)
+      const { isDarkTheme } = value;
 
-      const bgColor = isDarkTheme ? '#181818' : '#f9f9f9'
-      const headingColor = isDarkTheme ? '#f1f5f9' : '#1e293b'
-      const noteColor = isDarkTheme ? '#e2e8f0' : '#475569'
+      const bgColor = isDarkTheme ? '#181818' : '#f9f9f9';
+      const headingColor = isDarkTheme ? '#f1f5f9' : '#1e293b';
+      const noteColor = isDarkTheme ? '#e2e8f0' : '#475569';
 
       const notFindImageUrl = isDarkTheme
         ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-not-found-light-theme-img.png'
-        : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-not-found-dark-theme-img.png'
+        : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-not-found-dark-theme-img.png';
 
       return (
         <>
           <Header />
           <NavigationBar />
-          <NotFoundContainer bgColor={bgColor}>
-            <NotFoundVideosView>
-              <NotFoundVideosImage src={notFindImageUrl} alt="not found" />
-              <NotFoundVideosHeading headingColor={headingColor}>
+          <div className="not-found-container" style={{ backgroundColor: bgColor }}>
+            <div className="not-found-videos-view">
+              <img className="not-found-videos-image" src={notFindImageUrl} alt="not found" />
+              <h1 className="not-found-videos-heading" style={{ color: headingColor }}>
                 Page Not Found
-              </NotFoundVideosHeading>
-              <NotFoundVideosNote noteColor={noteColor}>
+              </h1>
+              <p className="not-found-videos-note" style={{ color: noteColor }}>
                 We are sorry, the page you requested could not be found.
-              </NotFoundVideosNote>
-            </NotFoundVideosView>
-          </NotFoundContainer>
+              </p>
+            </div>
+          </div>
         </>
-      )
+      );
     }}
   </nxtWatchContext.Consumer>
-)
+);
 
-export default NotFound
+export default NotFound;

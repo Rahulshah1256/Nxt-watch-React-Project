@@ -1,13 +1,5 @@
 import React, { useContext } from 'react';
 import nxtWatchContext from '../../context/nxtWatchContext';
-import {
-  ItemLink,
-  GamingListItem,
-  GamingThumbNailImage,
-  GamingContentSection,
-  GamingTitle,
-  GamingViewsAndDate,
-} from './styledComponents';
 
 const VideoCard = ({ videoDetails }) => {
   const { id, title, thumbnailUrl, viewCount } = videoDetails;
@@ -15,17 +7,15 @@ const VideoCard = ({ videoDetails }) => {
   const textColor = isDarkTheme ? '#f9f9f9' : '#231f20';
 
   return (
-    <ItemLink to={`/videos/${id}`} className="link">
-      <GamingListItem>
-        <GamingThumbNailImage src={thumbnailUrl} alt="video thumbnail" />
-        <GamingContentSection>
-          <GamingTitle color={textColor}>{title}</GamingTitle>
-          <GamingViewsAndDate color={textColor}>
-            {viewCount} Watching Worldwide
-          </GamingViewsAndDate>
-        </GamingContentSection>
-      </GamingListItem>
-    </ItemLink>
+    <a href={`/videos/${id}`} className="video-link">
+      <div className="video-list-item">
+        <img className="video-thumbnail-image" src={thumbnailUrl} alt="video thumbnail" />
+        <div className="video-content-section">
+          <p className="video-title" style={{ color: textColor }}>{title}</p>
+          <p className="views-and-date" style={{ color: textColor }}>{viewCount} Watching Worldwide</p>
+        </div>
+      </div>
+    </a>
   );
 };
 

@@ -1,14 +1,8 @@
 import { useContext } from 'react'
 import nxtWatchContext from '../../context/nxtWatchContext'
 import HomeVideoCard from '../HomeVideoCard'
-import {
-  NoVideosView,
-  NoVideosImage,
-  NoVideosHeading,
-  NoVideosNote,
-  RetryButton,
-  VideoCardList,
-} from './styledComponents'
+
+import './index.css'
 
 const HomeVideos = ({ homeVideos, onRetry }) => {
   const { isDarkTheme } = useContext(nxtWatchContext)
@@ -24,27 +18,28 @@ const HomeVideos = ({ homeVideos, onRetry }) => {
   return (
     <>
       {videosCount > 0 ? (
-        <VideoCardList>
+        <ul className="video-card-list">
           {homeVideos.map(eachVideo => (
             <HomeVideoCard video={eachVideo} key={eachVideo.id} />
           ))}
-        </VideoCardList>
+        </ul>
       ) : (
-        <NoVideosView>
-          <NoVideosImage
+        <div className="no-videos-view">
+          <img
             src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png"
             alt="no videos"
+            className="no-videos-image"
           />
-          <NoVideosHeading headingColor={headingColor}>
+          <h1 className="no-videos-heading" style={{ color: headingColor }}>
             No Search results found
-          </NoVideosHeading>
-          <NoVideosNote noteColor={noteColor}>
+          </h1>
+          <p className="no-videos-note" style={{ color: noteColor }}>
             Try different keywords or remove search filter
-          </NoVideosNote>
-          <RetryButton type="button" onClick={onClickRetry}>
+          </p>
+          <button type="button" className="retry-button" onClick={onClickRetry}>
             Retry
-          </RetryButton>
-        </NoVideosView>
+          </button>
+        </div>
       )}
     </>
   )

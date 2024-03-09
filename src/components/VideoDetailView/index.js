@@ -1,33 +1,32 @@
-import React, {useState, useEffect, useContext} from 'react'
-import Cookies from 'js-cookie'
-import Loader from 'react-loader-spinner'
-import Header from '../Header'
-import NavigationBar from '../NavigationBar'
-import nxtWatchContext from '../../context/nxtWatchContext'
-import FailureView from '../FailureView'
-import PlayVideoView from '../PlayVideoView'
-import {VideoDetailViewContainer, LoaderContainer} from './styledComponents'
-import {useParams} from 'react-router-dom'
+import React, { useState, useEffect, useContext } from 'react';
+import Cookies from 'js-cookie';
+import Loader from 'react-loader-spinner';
+import Header from '../Header';
+import NavigationBar from '../NavigationBar';
+import nxtWatchContext from '../../context/nxtWatchContext';
+import FailureView from '../FailureView';
+import PlayVideoView from '../PlayVideoView';
+import { useParams } from 'react-router-dom';
 
 const apiStatusConstants = {
   initial: 'INITIAL',
   success: 'SUCCESS',
   failure: 'FAILURE',
   inProgress: 'IN_PROGRESS',
-}
+};
 
 const VideoDetailView = () => {
-  const [apiStatus, setApiStatus] = useState(apiStatusConstants.initial)
-  const [videoDetails, setVideoDetails] = useState([])
-  const [isLiked, setIsLiked] = useState(false)
-  const [isDisLiked, setIsDisLiked] = useState(false)
-  const {id} = useParams()
+  const [apiStatus, setApiStatus] = useState(apiStatusConstants.initial);
+  const [videoDetails, setVideoDetails] = useState([]);
+  const [isLiked, setIsLiked] = useState(false);
+  const [isDisLiked, setIsDisLiked] = useState(false);
+  const { id } = useParams();
 
   useEffect(() => {
-    getVideoDetails()
-  }, [])
+    getVideoDetails();
+  }, []);
 
-  const formattedData = data => ({
+  const formattedData = (data) => ({
     id: data.video_details.id,
     title: data.video_details.title,
     videoUrl: data.video_details.video_url,
@@ -38,50 +37,50 @@ const VideoDetailView = () => {
     name: data.video_details.channel.name,
     profileImageUrl: data.video_details.channel.profile_image_url,
     subscriberCount: data.video_details.channel.subscriber_count,
-  })
+  });
 
   const getVideoDetails = async () => {
-    setApiStatus(apiStatusConstants.inProgress)
+    setApiStatus(apiStatusConstants.inProgress);
 
-    const jwtToken = Cookies.get('jwt_token')
-    const url = `https://apis.ccbp.in/videos/${id}`
+    const jwtToken = Cookies.get('jwt_token');
+    const url = `https://apis.ccbp.in/videos/${id}`;
     const options = {
       headers: {
         Authorization: `Bearer ${jwtToken}`,
       },
       method: 'GET',
-    }
+    };
     try {
-      const response = await fetch(url, options)
+      const response = await fetch(url, options);
       if (response.ok) {
-        const data = await response.json()
-        const updatedData = formattedData(data)
-        setVideoDetails(updatedData)
-        setApiStatus(apiStatusConstants.success)
+        const data = await response.json();
+        const updatedData = formattedData(data);
+        setVideoDetails(updatedData);
+        setApiStatus(apiStatusConstants.success);
       } else {
-        setApiStatus(apiStatusConstants.failure)
+        setApiStatus(apiStatusConstants.failure);
       }
     } catch (error) {
-      console.error('Error fetching video details:', error)
-      setApiStatus(apiStatusConstants.failure)
+      console.error('Error fetching video details:', error);
+      setApiStatus(apiStatusConstants.failure);
     }
-  }
+  };
 
   const clickLiked = () => {
-    setIsLiked(prevState => !prevState.isLiked)
-    setIsDisLiked(false)
-  }
+    setIsLiked((prevState) => !prevState.isLiked);
+    setIsDisLiked(false);
+  };
 
   const clickDisLiked = () => {
-    setIsDisLiked(prevState => !prevState.isDisLiked)
-    setIsLiked(false)
-  }
+    setIsDisLiked((prevState) => !prevState.isDisLiked);
+    setIsLiked(false);
+  };
 
   const renderLoadingView = () => (
-    <LoaderContainer data-testid='loader'>
-      <Loader type='ThreeDots' color='#0b69ff' height='50' width='50' />
-    </LoaderContainer>
-  )
+    <div className="loader-container" data-testid="loader">
+      <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
+    </div>
+  );
 
   const renderPlayVideoView = () => (
     <PlayVideoView
@@ -91,48 +90,49 @@ const VideoDetailView = () => {
       isLiked={isLiked}
       isDisLiked={isDisLiked}
     />
-  )
+  );
 
   const onRetry = () => {
-    getVideoDetails()
-  }
+    getVideoDetails();
+  };
 
-  const renderFailureView = () => <FailureView onRetry={onRetry} />
+  const renderFailureView = () => <FailureView onRetry={onRetry} />;
 
   const renderVideoDetailView = () => {
     switch (apiStatus) {
       case apiStatusConstants.success:
-        return renderPlayVideoView()
+        return renderPlayVideoView();
       case apiStatusConstants.failure:
-        return renderFailureView()
+        return renderFailureView();
       case apiStatusConstants.inProgress:
-        return renderLoadingView()
+        return renderLoadingView();
       default:
-        return null
+        return null;
     }
-  }
+  };
 
   return (
     <nxtWatchContext.Consumer>
-      {value => {
-        const {isDarkTheme} = value
-        const bgColor = isDarkTheme ? '#0f0f0f' : '#f9f9f9'
+      {(value) => {
+        const { isDarkTheme } = value;
+        const bgColor = isDarkTheme ? '#0f0f0f' : '#f9f9f9';
 
         return (
           <>
             <Header />
             <NavigationBar />
-            <VideoDetailViewContainer
-              data-testid='videoItemDetails'
-              bgColor={bgColor}
+            <div
+              className="video-detail-view-container"
+              data-testid="videoItemDetails"
+              style={{ backgroundColor: bgColor }}
             >
               {renderVideoDetailView()}
-            </VideoDetailViewContainer>
+            </div>
           </>
-        )
+        );
       }}
     </nxtWatchContext.Consumer>
-  )
-}
+  );
+};
 
-export default VideoDetailView
+export default VideoDetailView;

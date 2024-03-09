@@ -1,20 +1,9 @@
 import React, { useContext } from 'react';
 import { CgPlayListAdd } from 'react-icons/cg';
-import {
-  SavedContainer,
-  SavedTitleIconContainer,
-  SavedVideoTitle,
-  SavedVideoList,
-  SavedText,
-  NoSavedVideosView,
-  NoSavedVideosImage,
-  NoSavedVideosHeading,
-  NoSavedVideosNote,
-} from './styledComponents';
 import nxtWatchContext from '../../context/nxtWatchContext';
-import Header from '../Header'
-import NavigationBar from '../NavigationBar'
-import VideoCard from '../VideoCard'
+import Header from '../Header';
+import NavigationBar from '../NavigationBar';
+import VideoCard from '../VideoCard';
 
 const SavedVideos = () => {
   const { isDarkTheme, savedVideos } = useContext(nxtWatchContext);
@@ -28,34 +17,35 @@ const SavedVideos = () => {
     <>
       <Header />
       <NavigationBar />
-      <SavedContainer data-testid="savedVideos" bgColor={bgColor}>
-        <SavedVideoTitle>
-          <SavedTitleIconContainer>
+      <div className="saved-container" data-testid="savedVideos" style={{ backgroundColor: bgColor }}>
+        <div className="saved-title">
+          <div className="saved-icon-container">
             <CgPlayListAdd size={35} color="#ff0000" />
-          </SavedTitleIconContainer>
-          <SavedText color={textColor}>Saved Videos</SavedText>
-        </SavedVideoTitle>
+          </div>
+          <h1 className="saved-text" style={{ color: textColor }}>Saved Videos</h1>
+        </div>
         {savedVideos.length > 0 ? (
-          <SavedVideoList>
+          <ul className="saved-video-list">
             {savedVideos.map(eachVideo => (
               <VideoCard key={eachVideo.id} videoDetails={eachVideo} />
             ))}
-          </SavedVideoList>
+          </ul>
         ) : (
-          <NoSavedVideosView>
-            <NoSavedVideosImage
+          <div className="no-saved-videos-view">
+            <img
+              className="no-saved-videos-image"
               src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-saved-videos-img.png"
               alt="no saved videos"
             />
-            <NoSavedVideosHeading headingColor={headingColor}>
+            <h1 className="no-saved-videos-heading" style={{ color: headingColor }}>
               No saved videos found
-            </NoSavedVideosHeading>
-            <NoSavedVideosNote noteColor={noteColor}>
+            </h1>
+            <p className="no-saved-videos-note" style={{ color: noteColor }}>
               You can save your videos while watching them
-            </NoSavedVideosNote>
-          </NoSavedVideosView>
+            </p>
+          </div>
         )}
-      </SavedContainer>
+      </div>
     </>
   );
 };

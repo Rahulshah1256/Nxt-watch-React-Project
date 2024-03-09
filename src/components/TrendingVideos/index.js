@@ -7,14 +7,6 @@ import FailureView from '../FailureView';
 import VideoCard from '../VideoCard';
 import Header from '../Header';
 import NavigationBar from '../NavigationBar';
-import {
-  TrendingContainer,
-  TitleIconContainer,
-  TrendingVideoTitle,
-  TrendingVideoList,
-  TrendingText,
-  LoaderContainer,
-} from './styledComponents';
 
 const TrendingVideos = () => {
   const [trendingVideos, setTrendingVideos] = useState([]);
@@ -54,17 +46,17 @@ const TrendingVideos = () => {
   };
 
   const renderLoadingView = () => (
-    <LoaderContainer data-testid="loader">
+    <div className="loader-container" data-testid="loader">
       <Loader type="ThreeDots" color="#0b69ff" height={50} width={50} />
-    </LoaderContainer>
+    </div>
   );
 
   const renderVideosView = () => (
-    <TrendingVideoList>
+    <ul className="trending-video-list">
       {trendingVideos.map(eachVideo => (
         <VideoCard key={eachVideo.id} videoDetails={eachVideo} />
       ))}
-    </TrendingVideoList>
+    </ul>
   );
 
   const onRetry = () => {
@@ -94,15 +86,15 @@ const TrendingVideos = () => {
     <div data-testid="trending">
       <Header />
       <NavigationBar />
-      <TrendingContainer data-testid="trending" bgColor={bgColor}>
-        <TrendingVideoTitle>
-          <TitleIconContainer>
+      <div className="trending-container" data-testid="trending" style={{ backgroundColor: bgColor }}>
+        <div className="trending-video-title">
+          <div className="title-icon-container">
             <HiFire size={35} color="#ff0000" />
-          </TitleIconContainer>
-          <TrendingText color={textColor}>Trending</TrendingText>
-        </TrendingVideoTitle>
+          </div>
+          <h1 className="trending-text" style={{ color: textColor }}>Trending</h1>
+        </div>
         {renderTrendingVideos()}
-      </TrendingContainer>
+      </div>
     </div>
   );
 };

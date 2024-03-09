@@ -7,20 +7,7 @@ import NavigationBar from '../NavigationBar'
 import nxtWatchContext from '../../context/nxtWatchContext'
 import HomeVideos from '../HomeVideos'
 import FailureView from '../FailureView'
-import {
-  HomeContainer,
-  BannerContainer,
-  BannerImage,
-  BannerText,
-  BannerButton,
-  BannerLeftPart,
-  BannerRightPart,
-  BannerCloseButton,
-  SearchContainer,
-  SearchInput,
-  SearchIconContainer,
-  LoaderContainer,
-} from './styledComponents'
+import './index.css'
 
 const apiStatusConstants = {
   initial: 'INITIAL',
@@ -90,9 +77,9 @@ const Home = () => {
   }
 
   const renderLoadingView = () => (
-    <LoaderContainer data-testid="loader">
+    <div className="loader-container" data-testid="loader">
       <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
-    </LoaderContainer>
+    </div>
   )
 
   const renderVideosView = () => <HomeVideos homeVideos={homeVideos} onRetry={onRetry} />
@@ -121,38 +108,42 @@ const Home = () => {
     <>
       <Header />
       <NavigationBar />
-      <HomeContainer data-testid="home" bgColor={bgColor}>
-        <BannerContainer data-testid="banner" display={display}>
-          <BannerLeftPart>
-            <BannerImage
+      <div className="home-container" data-testid="home" style={{ backgroundColor: bgColor }}>
+        <div className="banner-container" data-testid="banner" style={{ display }}>
+          <div className="banner-left-part">
+            <img
+              className="banner-image"
               src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
               alt="nxt watch logo"
             />
-            <BannerText>
+            <p className="banner-text">
               Buy Nxt Watch Premium prepaid plans with <br /> UPI
-            </BannerText>
-            <BannerButton type="button">GET IT NOW</BannerButton>
-          </BannerLeftPart>
-          <BannerRightPart>
-            <BannerCloseButton data-testid="close" onClick={onCloseBanner}>
+            </p>
+            <button className="banner-button" type="button">
+              GET IT NOW
+            </button>
+          </div>
+          <div className="banner-right-part">
+            <button className="banner-close-button" data-testid="close" onClick={onCloseBanner}>
               <AiOutlineClose size={25} />
-            </BannerCloseButton>
-          </BannerRightPart>
-        </BannerContainer>
-        <SearchContainer>
-          <SearchInput
+            </button>
+          </div>
+        </div>
+        <div className="search-container">
+          <input
+            className="search-input"
             type="search"
             placeholder="Search"
             value={searchInput}
             onChange={onChangeInput}
-            color={textColor}
+            style={{ color: textColor }}
           />
-          <SearchIconContainer data-testid="searchButton" onClick={getSearchResults}>
+          <button className="search-icon-container" data-testid="searchButton" onClick={getSearchResults}>
             <AiOutlineSearch size={20} />
-          </SearchIconContainer>
-        </SearchContainer>
+          </button>
+        </div>
         {renderHomeVideos()}
-      </HomeContainer>
+      </div>
     </>
   )
 }
