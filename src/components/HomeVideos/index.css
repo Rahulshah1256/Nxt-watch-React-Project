@@ -1,0 +1,54 @@
+.no-videos-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: none;
+}
+
+.no-videos-image {
+  width: 200px;
+}
+
+@media screen and (min-width: 768px) {
+  .no-videos-image {
+    width: 450px;
+  }
+}
+
+.no-videos-heading {
+  font-family: Roboto;
+  font-size: 25px;
+}
+
+.no-videos-note {
+  font-family: Roboto;
+  font-size: 18px;
+}
+
+.retry-button {
+  border: none;
+  background-color: #4f46e5;
+  border-radius: 3px;
+  color: #ffffff;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-family: Roboto;
+  font-size: 15px;
+}
+
+.video-card-list {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+@media screen and (min-width: 768px) {
+  .video-card-list {
+    margin-left: 20px;
+  }
+}

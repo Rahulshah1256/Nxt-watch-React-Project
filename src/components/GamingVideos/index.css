@@ -1,0 +1,66 @@
+.gaming-container {
+  min-height: 100vh;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  overflow-y: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .gaming-container {
+    margin-left: 250px;
+    margin-bottom: 0px;
+  }
+}
+
+.gaming-video-title {
+  display: flex;
+  align-items: center;
+}
+
+.gaming-title-icon-container {
+  width: 40px;
+  height: 40px;
+  border-radius: 80px;
+  margin-left: 10px;
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (min-width: 768px) {
+  .gaming-title-icon-container {
+    margin-left: 40px;
+  }
+}
+
+.gaming-text {
+  font-family: Roboto;
+  font-size: 25px;
+}
+
+@media screen and (min-width: 768px) {
+  .gaming-text {
+    font-size: 35px;
+  }
+}
+.gaming-video-list {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 0px;
+}
+
+@media screen and (min-width: 768px) {
+  .gaming-video-list {
+    margin-left: 40px;
+  }
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}

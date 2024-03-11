@@ -1,0 +1,168 @@
+.navbar-header {
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  height: 60px;
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .navbar-header {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+.header-logo {
+  width: 80px;
+  height: 30px;
+}
+
+@media screen and (min-width: 768px) {
+  .header-logo {
+    width: 100px;
+    height: 40px;
+  }
+}
+
+.actions-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.theme-button {
+  background: none;
+  border: none;
+  margin-right: 10px;
+}
+
+.logout-button {
+  border: 1px solid;
+  font-family: 'Roboto';
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 5px;
+  margin-left: 6px;
+}
+
+@media screen and (max-width: 768px) {
+  .logout-button {
+    display: none;
+  }
+}
+
+.logout-icon-button {
+  background: none;
+  border: none;
+}
+
+@media screen and (min-width: 768px) {
+  .logout-icon-button {
+    display: none;
+  }
+}
+
+.profile-image {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.modal-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 150px;
+  width: 250px;
+  background-color: #cbd5e1;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .modal-container {
+    height: 200px;
+    width: 400px;
+  }
+}
+
+.close-button {
+  background-color: transparent;
+  border: 1px solid grey;
+  padding: 8px;
+  padding-right: 12px;
+  padding-left: 12px;
+  color: grey;
+  margin: 12px;
+  outline: none;
+  cursor: pointer;
+  border-radius: 6px;
+  font-family: Roboto;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+@media screen and (min-width: 768px) {
+  .close-button {
+    font-size: 15px;
+    padding: 13px;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+}
+
+.confirm-button {
+  align-self: flex-end;
+  background-color: #3b82f6;
+  color: white;
+  padding: 8px;
+  padding-right: 12px;
+  padding-left: 12px;
+  border: 1px solid #3b82f6;
+  margin: 10px;
+  outline: none;
+  cursor: pointer;
+  border-radius: 6px;
+  font-family: Roboto;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+@media screen and (min-width: 768px) {
+  .confirm-button {
+    font-size: 15px;
+    padding: 13px;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+}
+
+.modal-desc {
+  font-family: 'Roboto';
+  font-size: 15px;
+  margin: 10px;
+  color: black;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .modal-desc {
+    font-size: 20px;
+  }
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.logo-link {
+  text-decoration: none;
+}

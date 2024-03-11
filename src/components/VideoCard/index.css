@@ -1,0 +1,78 @@
+.link {
+    text-decoration: none;
+  }
+  
+  .trending-list-item {
+    background: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  @media screen and (min-width: 768px) {
+    .trending-list-item {
+      flex-direction: row;
+      padding-left: 40px;
+    }
+  }
+  
+  .trending-thumbnail-image {
+    width: 100%;
+  }
+  
+  @media screen and (min-width: 768px) {
+    .trending-thumbnail-image {
+      width: 300px;
+    }
+  }
+  
+  .trending-video-details {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+  }
+  
+  .trending-profile-image {
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    margin: 20px;
+  }
+  
+  @media screen and (min-width: 768px) {
+    .trending-profile-image {
+      display: none;
+    }
+  }
+  
+  .trending-content-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 8px;
+  }
+  
+  .trending-title {
+    font-family: Roboto;
+    font-size: 15px;
+  }
+  
+  .trending-channel-name {
+    font-family: Roboto;
+    font-size: 13px;
+  }
+  
+  .trending-views-and-date {
+    font-family: Roboto;
+    font-size: 12px;
+  }
+  
+  .trending-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  
