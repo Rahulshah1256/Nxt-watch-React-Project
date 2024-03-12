@@ -1,0 +1,21 @@
+.video-detail-view-container {
+    min-height: 100vh;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    overflow-y: auto;
+  }
+  
+  @media screen and (min-width: 768px) {
+    .video-detail-view-container {
+      margin-left: 250px;
+      margin-bottom: 0px;
+    }
+  }
+  
+  .loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+  }
+  

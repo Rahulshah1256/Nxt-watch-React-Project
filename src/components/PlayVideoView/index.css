@@ -1,0 +1,96 @@
+.video-player {
+  padding: 20px;
+}
+
+.play-video-title {
+  font-family: Roboto;
+  font-size: 25px;
+}
+
+.play-video-status-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.play-video-status {
+  font-family: Roboto;
+  font-size: 12px;
+}
+
+.play-video-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.play-social-buttons-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.social-button {
+  border: none;
+  background: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.button-text {
+  margin-left: 5px;
+}
+
+@media screen and (max-width: 576px) {
+  .button-text {
+    display: none;
+  }
+}
+
+.hr-line {
+  border: 1px solid #909090;
+}
+
+.channel-container {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+.channel-image {
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+  margin-right: 20px;
+}
+
+.channel-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.channel-name {
+  font-family: Roboto;
+  font-size: 15px;
+  margin: 0px;
+}
+
+.channel-subscribers {
+  font-family: Roboto;
+  font-size: 12px;
+}
+
+.channel-description {
+  font-family: Roboto;
+  font-size: 15px;
+}
+
+.btn-container {
+  display: flex;
+  background: none;
+}
